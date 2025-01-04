@@ -1,0 +1,54 @@
+import cryptography
+import numpy
+import pandas
+
+
+def gmail_cadastro(email):
+
+    gmailUser = input("Digite o seu gmail para  a validacao da sua conta:")
+    print("sua resposta e igual a %s" % gmailUser)
+
+    if email == gmailUser:
+        email.find("user@gmail.com") != -1
+        print(f"O seu gmail logado no sistema e: {email}")
+    elif email != gmailUser:
+        email.find("user@gmail.com") != -1
+        print("Error 404.\n Not valid gmail found.\n")
+
+email = "user@gmail.com"
+    
+gmail_cadastro(email)
+
+def senha_cadastro(passwordUser):
+
+    passwordVerify = input("Digite a sua senha para a validacao da sua conta:")
+    while passwordUser == passwordVerify :
+        passwordUser = input("Verifique a senha:")
+        print("a sua senha e igual a %s" % passwordUser)
+
+        passwordVerify = input("verifique se a sua senha esta correta:")
+
+        if passwordUser != passwordVerify:
+            print("Error.\n Try again")
+            
+        elif passwordUser == passwordVerify:
+            print("Sucess.\n")
+            break
+
+passwordUser = "f8bce90d99c382f5b5b50b63dKc98c0e9e586f3FscxT24YiJenSjm2Rde127cb650b98332bde50591cd07P"
+
+senha_cadastro(passwordUser)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
