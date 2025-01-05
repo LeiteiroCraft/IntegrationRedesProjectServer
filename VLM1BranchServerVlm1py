@@ -1,43 +1,50 @@
-import cryptography
-import numpy
-import pandas
+import re
 
 
-def gmail_cadastro(email):
+def validemail(email):
+    defalt_email = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    return re.match(defalt_email, email) is not None
 
-    gmailUser = input("Digite o seu gmail para  a validacao da sua conta:")
-    print("sua resposta e igual a %s" % gmailUser)
+def gmail_cadastro(gmail):
+    while True:
+        gmailUser = input("Digite o seu gmail para  a validacao da sua conta:")
+        print("sua resposta e igual a %s" % gmailUser)
 
-    if email == gmailUser:
-        email.find("user@gmail.com") != -1
-        print(f"O seu gmail logado no sistema e: {email}")
-    elif email != gmailUser:
-        email.find("user@gmail.com") != -1
-        print("Error 404.\n Not valid gmail found.\n")
+        if not validemail(gmailUser):  
+            print("Error 404.\n Not valid gmail found.\n")
+            return False
+
+        if  gmailUser == gmail:
+            print(f"O gmail foi logado com sucesso no sistema! {gmailUser}\n")
+            return True
+
+        elif gmailUser != gmail:
+            print("Gmail nao encontrado no sistema\n Tente novamente:")
+            continue
+
+def senha_cadastro(passwordUser, passwordVerify):
+    while True:
+        passwordUser = input("Digite a senha para a validacao da conta")
+
+        passwordVerify = input("Digite a sua senha para a validacao da sua conta novamente:")
+    
+        if passwordUser == passwordVerify:
+            print("Parabens!!!.\n Voce foi logado na sua conta com sucesso.\n")
+            return True
+
+        elif passwordUser != passwordVerify:
+
+            print("Error.\n senhas nao conicidem ou senha invalida\nTente novamente:")
+            continue            
 
 email = "user@gmail.com"
     
 gmail_cadastro(email)
-
-def senha_cadastro(passwordUser):
-
-    passwordVerify = input("Digite a sua senha para a validacao da sua conta:")
-    while passwordUser == passwordVerify :
-        passwordUser = input("Verifique a senha:")
-        print("a sua senha e igual a %s" % passwordUser)
-
-        passwordVerify = input("verifique se a sua senha esta correta:")
-
-        if passwordUser != passwordVerify:
-            print("Error.\n Try again")
-            
-        elif passwordUser == passwordVerify:
-            print("Sucess.\n")
-            break
-
 passwordUser = "f8bce90d99c382f5b5b50b63dKc98c0e9e586f3FscxT24YiJenSjm2Rde127cb650b98332bde50591cd07P"
 
-senha_cadastro(passwordUser)
+passw = passwordUser
+
+senha_cadastro(passwordUser,passw)
 
 
 
